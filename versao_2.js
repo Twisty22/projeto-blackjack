@@ -13,7 +13,7 @@
 
 console.log("Boas vindas ao jogo de BlackJack!")
 
-if(confirm("Quer iniciar uma nova rodada?")){
+if(confirm("Boas vindas ao jogo de BlackJack!\nQuer iniciar uma nova rodada?")){
     let jogador = [];
     for(let i = 0; i < 2; i++){
         jogador[i]= comprarCarta();
@@ -41,10 +41,8 @@ if(confirm("Quer iniciar uma nova rodada?")){
         jogadorCartas = jogadorCartas + jogador[i].texto;
     }
     let pcCartas = "";
-    for(let i = 0; i < pc.length; i++){
-        pcCartas = pcCartas + pc[i].texto;
-    }
-    if(confirm(`Suas cartas são ${jogadorCartas}. A carta revelada do computador é ${pcCartas}\n Deseja comprar uma carta?`)){
+    pcCartas = pc[0].texto;
+    if(confirm(`Suas cartas são ${jogadorCartas}. A carta revelada do computador é ${pcCartas}\nDeseja comprar uma carta?`)){
         let condicao;
         let i = jogador.length;
         do{
@@ -53,10 +51,9 @@ if(confirm("Quer iniciar uma nova rodada?")){
             pontuacaoJogador = pontuacaoJogador + jogador[i].valor;
             if(pontuacaoJogador > 21){
                 condicao = false;
-                alert(`Suas cartas são ${jogadorCartas}. Sua pontuação é ${pontuacaoJogador}.\n As cartas do computador são ${pcCartas}. A pontuação do pc é ${pontuacaoPC}.`);
             }
             else{
-                condicao = confirm(`Suas cartas são ${jogadorCartas}. A carta revelada do computador é ${pcCartas}\n Deseja comprar uma carta?`);
+                condicao = confirm(`Suas cartas são ${jogadorCartas}. A carta revelada do computador é ${pcCartas}\nDeseja comprar uma carta?`);
             }
             i++;
         }while(condicao);
@@ -69,28 +66,31 @@ if(confirm("Quer iniciar uma nova rodada?")){
             pcCartas = pcCartas + pc[i].texto;
             i++;
         }
-        alert(`Suas cartas são ${jogadorCartas}. Sua pontuação é ${pontuacaoJogador}.\n As cartas do computador são ${pcCartas}. A pontuação do pc é ${pontuacaoPC}.`);
+        alert(`Suas cartas são ${jogadorCartas}. Sua pontuação é ${pontuacaoJogador}.\nAs cartas do computador são ${pcCartas}. A pontuação do pc é ${pontuacaoPC}.`);
+    }
+    for(let i = 0; i < pc.length; i++){
+        pcCartas = pcCartas + pc[i].texto;
     }
     if(pontuacaoJogador > pontuacaoPC){
         if(pontuacaoJogador <= 21){
-            console.log("O jogador ganhou!!!");
+            alert(`Usuario - Cartas: ${jogadorCartas} - Pontuação: ${pontuacaoJogador}.\nComputador - Cartas:  ${pcCartas} - Pontuação: ${pontuacaoPC}.\nO Usuario ganhou!!!`);
         }
         else{
-            console.log("O computador ganhou!!!");
+            alert(`Usuario - Cartas: ${jogadorCartas} - Pontuação: ${pontuacaoJogador}.\nComputador - Cartas:  ${pcCartas} - Pontuação: ${pontuacaoPC}.\nO Computador ganhou!!!`);
         }
     }
     else if(pontuacaoPC > pontuacaoJogador){
         if(pontuacaoPC <= 21){
-            console.log("O computador ganhou!!!");
+            alert(`Usuario - Cartas: ${jogadorCartas} - Pontuação: ${pontuacaoJogador}.\nComputador - Cartas:  ${pcCartas} - Pontuação: ${pontuacaoPC}.\nO Computador ganhou!!!`);
         }
         else{
-            console.log("O jogador ganhou!!!");
+            alert(`Usuario - Cartas: ${jogadorCartas} - Pontuação: ${pontuacaoJogador}.\nComputador - Cartas:  ${pcCartas} - Pontuação: ${pontuacaoPC}.\nO Usuario ganhou!!!`);
         }
     }
     else{
-        console.log("Houve um empate!!!");
+        alert(`Usuario - Cartas: ${jogadorCartas} - Pontuação: ${pontuacaoJogador}.\nComputador - Cartas:  ${pcCartas} - Pontuação: ${pontuacaoPC}.\nHouve um empate!!!`);
     }
 }
 else{
-    console.log("O jogo acabou.");
+    alert("O jogo acabou.");
 }
